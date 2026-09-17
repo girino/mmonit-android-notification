@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">M/Monit Status</string>
+    <string name="notification_channel_name">Status do M/Monit</string>
+    <string name="notification_channel_description">Atualização do estado dos hosts do M/Monit</string>
+    <string name="notification_title">M/Monit</string>
+</resources>

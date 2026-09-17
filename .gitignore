@@ -1,0 +1,14 @@
+.gradle/
+.kotlin/
+.idea/
+local.properties
+.tools/
+*.iml
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android Studio generated files
+/.idea/
+/app/release/
