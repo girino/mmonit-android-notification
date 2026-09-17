@@ -8,6 +8,7 @@ Aplicativo Android que consulta periodicamente um servidor M/Monit e exibe o pio
 - Login por formulário com os campos padrão do M/Monit.
 - Consulta de `/api/2/status/hosts/summary`.
 - Polling periódico com `WorkManager`, respeitando o intervalo mínimo de 15 minutos do Android.
+- Solicitação de exclusão da otimização de bateria para reduzir suspensões do polling quando a tela está desligada.
 - Notificação persistente com círculo colorido na área expandida e estado textual.
 - Toque no círculo de status para abrir o endereço configurado no navegador padrão.
 - Credenciais cifradas com AES-GCM usando uma chave do Android Keystore.
@@ -74,6 +75,10 @@ Estas instruções também são incluídas nas notas das GitHub Releases, que o 
 ## Observações
 
 O Android não permite garantir um ícone colorido arbitrário na barra de status. O app usa um ícone monocromático obrigatório, a cor do canal/notificação e um círculo colorido como ícone expandido, além do indicador colorido na tela principal.
+
+## Execução em segundo plano
+
+Ao abrir o app, enquanto a isenção não estiver concedida, ele solicita a exclusão da otimização de bateria para tentar manter o polling funcionando durante períodos longos com a tela desligada. Essa autorização não garante execução contínua: alguns fabricantes também exigem que o app seja configurado como `Sem restrições` ou `Não otimizado` nas configurações de bateria e que os dados em segundo plano estejam liberados.
 
 ## Licença
 
