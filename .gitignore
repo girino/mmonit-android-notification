@@ -8,6 +8,9 @@ build/
 captures/
 .externalNativeBuild/
 .cxx/
+*.jks
+*.p12
+*.keystore
 
 # Android Studio generated files
 /.idea/
