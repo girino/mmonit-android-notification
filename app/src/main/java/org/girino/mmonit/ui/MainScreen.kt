@@ -50,6 +50,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalAutofill
 import androidx.compose.ui.platform.LocalAutofillTree
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
@@ -62,6 +63,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.girino.mmonit.BuildConfig
 import org.girino.mmonit.R
 import org.girino.mmonit.domain.MMonitStatusSnapshot
 import java.time.Instant
@@ -74,6 +76,7 @@ fun MMonitApp(viewModel: MainViewModel) {
 
     when {
         state.loading -> LoadingScreen()
+        state.showAbout -> AboutScreen(viewModel::closeAbout, viewModel::openLicenseUrl)
         state.showSettings -> ConfigurationScreen(state, viewModel)
         else -> StatusScreen(state, viewModel)
     }
@@ -97,6 +100,12 @@ private fun StatusScreen(state: MainUiState, viewModel: MainViewModel) {
             TopAppBar(
                 title = { Text("M/Monit Status") },
                 actions = {
+                    IconButton(onClick = viewModel::openAbout) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_info),
+                            contentDescription = stringResource(R.string.about_action),
+                        )
+                    }
                     IconButton(onClick = viewModel::openSettings) {
                         Icon(
                             painter = painterResource(R.drawable.ic_settings),
@@ -166,6 +175,73 @@ private fun StatusScreen(state: MainUiState, viewModel: MainViewModel) {
                 }
             }
             MessageText(state)
+        }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun AboutScreen(onBack: () -> Unit, onOpenLicense: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.about_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_arrow_back),
+                            contentDescription = stringResource(R.string.about_back),
+                        )
+                    }
+                },
+            )
+        },
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(horizontal = 24.dp, vertical = 20.dp)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.about_app_name),
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
+                text = stringResource(R.string.about_copyright),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            HorizontalDivider()
+            Text(
+                text = stringResource(R.string.about_description),
+                style = MaterialTheme.typography.bodyLarge,
+            )
+            Text(
+                text = stringResource(R.string.about_license_heading),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = stringResource(R.string.about_license_name),
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Medium,
+            )
+            Text(
+                text = stringResource(R.string.about_license_details),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            OutlinedButton(onClick = onOpenLicense) {
+                Text(stringResource(R.string.about_open_license))
+            }
         }
     }
 }

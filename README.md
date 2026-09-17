@@ -74,3 +74,7 @@ Estas instruções também são incluídas nas notas das GitHub Releases, que o 
 ## Observações
 
 O Android não permite garantir um ícone colorido arbitrário na barra de status. O app usa um ícone monocromático obrigatório, a cor do canal/notificação e um círculo colorido como ícone expandido, além do indicador colorido na tela principal.
+
+## Licença
+
+O aplicativo é distribuído sob a [Girino Anarchist's License (GAL)](https://license.girino.org). A cópia da licença está no arquivo `LICENSE`, e o app também exibe essas informações na tela `Sobre`.

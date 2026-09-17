@@ -4,4 +4,15 @@
     <string name="notification_channel_name">Status do M/Monit</string>
     <string name="notification_channel_description">Atualização do estado dos hosts do M/Monit</string>
     <string name="notification_title">M/Monit</string>
+    <string name="about_action">Sobre</string>
+    <string name="about_title">Sobre o aplicativo</string>
+    <string name="about_app_name">M/Monit Android Status</string>
+    <string name="about_version">Versão %1$s</string>
+    <string name="about_copyright">Copyright (c) 2026 Girino Vey.</string>
+    <string name="about_description">Aplicativo Android que consulta periodicamente um servidor M/Monit e exibe o pior estado encontrado.</string>
+    <string name="about_license_heading">Licença</string>
+    <string name="about_license_name">Girino Anarchist\'s License (GAL)</string>
+    <string name="about_license_details">A licença completa está no arquivo LICENSE do projeto e no site oficial da GAL.</string>
+    <string name="about_open_license">Abrir license.girino.org</string>
+    <string name="about_back">Voltar</string>
 </resources>

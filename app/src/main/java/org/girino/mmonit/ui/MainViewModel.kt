@@ -27,6 +27,7 @@ data class MainUiState(
     val loading: Boolean = true,
     val configured: Boolean = false,
     val showSettings: Boolean = false,
+    val showAbout: Boolean = false,
     val serverUrl: String = "",
     val username: String = "",
     val password: String = "",
@@ -86,12 +87,40 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun openSettings() {
-        _state.update { it.copy(showSettings = true, message = null, password = "") }
+        _state.update {
+            it.copy(showSettings = true, showAbout = false, message = null, password = "")
+        }
     }
 
     fun closeSettings() {
         if (_state.value.configured) {
-            _state.update { it.copy(showSettings = false, message = null, password = "") }
+            _state.update {
+                it.copy(showSettings = false, showAbout = false, message = null, password = "")
+            }
+        }
+    }
+
+    fun openAbout() {
+        _state.update { it.copy(showAbout = true, showSettings = false, message = null) }
+    }
+
+    fun closeAbout() {
+        _state.update { it.copy(showAbout = false, message = null) }
+    }
+
+    fun openLicenseUrl() {
+        try {
+            appContext.startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse(LICENSE_URL))
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            )
+        } catch (_: ActivityNotFoundException) {
+            _state.update {
+                it.copy(
+                    message = "Nenhum navegador está disponível neste dispositivo.",
+                    messageIsError = true,
+                )
+            }
         }
     }
 
@@ -230,5 +259,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 messageIsError = true,
             )
         }
+    }
+
+    private companion object {
+        const val LICENSE_URL = "https://license.girino.org"
     }
 }
