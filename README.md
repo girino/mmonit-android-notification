@@ -58,7 +58,7 @@ O [Obtainium](https://github.com/ImranR98/Obtainium) pode acompanhar os releases
 2. Abra o Obtainium e toque em `Add App`.
 3. Cole a URL do repositório: `https://github.com/girino/mmonit-android-notification`.
 4. Confirme a fonte GitHub e adicione o aplicativo.
-5. Para testar a versão alpha atual, habilite o acompanhamento de pre-releases nas opções da fonte e selecione `v0.1.0-alpha.1`.
+5. Para testar a versão alpha atual, habilite o acompanhamento de pre-releases nas opções da fonte e selecione `v0.1.0-alpha.2`.
 6. Para acompanhar somente versões estáveis, deixe pre-releases desabilitado. O Obtainium poderá verificar e instalar os próximos releases automaticamente.
 
 Também é possível abrir diretamente a tela de adição no Obtainium:
@@ -67,7 +67,7 @@ Também é possível abrir diretamente a tela de adição no Obtainium:
 obtainium://add?url=https%3A%2F%2Fgithub.com%2Fgirino%2Fmmonit-android-notification
 ```
 
-Na primeira instalação, o Android pode pedir autorização para que o Obtainium instale aplicativos de fontes desconhecidas. A release `v0.1.0-alpha.1` existente foi publicada antes da configuração da chave de produção e é um APK debug; a próxima release assinada deverá ser instalada como uma nova instalação se a assinatura for diferente.
+Na primeira instalação, o Android pode pedir autorização para que o Obtainium instale aplicativos de fontes desconhecidas. A release `v0.1.0-alpha.1` foi publicada antes da configuração da chave de produção e é um APK debug; a `v0.1.0-alpha.2` é a primeira release assinada com a chave de produção. Se a alpha.1 já estiver instalada, será necessário desinstalá-la antes de instalar a alpha.2.
 
 Estas instruções também são incluídas nas notas das GitHub Releases, que o Obtainium exibe como changelog do aplicativo.
 
